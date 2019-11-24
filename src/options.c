@@ -50,6 +50,7 @@ init_parse_options(int argc, char **argv)
    opt.line_style = LineSolid;
    opt.line_width = 1;
    opt.line_color = NULL;
+   opt.grow = 0;
 
    /* Parse the cmdline args */
    scrot_parse_option_array(argc, argv);
@@ -155,7 +156,7 @@ options_parse_line(char *optarg)
 static void
 scrot_parse_option_array(int argc, char **argv)
 {
-   static char stropts[] = "a:ofpbcd:e:hmq:st:uv+:zn:l:";
+   static char stropts[] = "a:ofpbcd:e:hmq:st:uv+:zn:l:g:";
 
    static struct option lopts[] = {
       /* actions */
@@ -170,6 +171,7 @@ scrot_parse_option_array(int argc, char **argv)
       {"silent", 0, 0, 'z'},
       {"pointer", 0, 0, 'p'},
       {"freeze", 0, 0, 'f'},
+      {"grow", 0, 0, 'g'},
       {"overwrite", 0, 0, 'o'},
       /* toggles */
       {"thumb", 1, 0, 't'},
@@ -248,6 +250,9 @@ scrot_parse_option_array(int argc, char **argv)
            break;
         case 'l':
            options_parse_line(optarg);
+           break;
+        case 'g':
+           opt.grow = options_parse_required_number(optarg);
            break;
         case '?':
            exit(EXIT_FAILURE);

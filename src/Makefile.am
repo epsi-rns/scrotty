@@ -31,7 +31,7 @@ $(X_CFLAGS) -I$(prefix)/include -I$(includedir) -I. \
 -DPREFIX=\""$(prefix)"\" @GIBLIB_CFLAGS@
 LIBOBJS = @LIBOBJS@
 
-bin_PROGRAMS      = scrot
-scrot_SOURCES       = main.c getopt.c getopt1.c getopt.h scrot.h \
+bin_PROGRAMS      = scrotty
+scrotty_SOURCES       = main.c getopt.c getopt1.c getopt.h scrot.h \
 options.c options.h debug.h imlib.c structs.h note.c note.h
-scrot_LDADD         = -lX11 -lXfixes -lXcursor @GIBLIB_LIBS@
+scrotty_LDADD         = -lX11 -lXfixes -lXcursor @GIBLIB_LIBS@

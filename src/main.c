@@ -535,6 +535,11 @@ scrot_nice_clip(int *rx,
   int *rw,
   int *rh)
 {
+  *rx -= opt.grow;
+  *ry -= opt.grow;
+  *rw += opt.grow*2;
+  *rh += opt.grow*2;
+  
   if (*rx < 0) {
     *rw += *rx;
     *rx = 0;
